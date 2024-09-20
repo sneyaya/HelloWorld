@@ -1,0 +1,33 @@
+#include <iostream>
+#include <set>
+
+using namespace std;
+
+int main() {
+    int q; // Number of queries
+    cin >> q;
+    
+    set<int> s; // Create a set to store unique integers
+    
+    while (q--) {
+        int queryType, num;
+        cin >> queryType >> num;
+        
+        if (queryType == 1) {
+            // Insert element num into the set
+            s.insert(num);
+        } else if (queryType == 2) {
+            // Erase element num from the set (if it exists)
+            s.erase(num);
+        } else if (queryType == 3) {
+            // Check if element num is in the set and print "Yes" or "No"
+            if (s.find(num) != s.end()) {
+                cout << "Yes" << endl;
+            } else {
+                cout << "No" << endl;
+            }
+        }
+    }
+    
+    return 0;
+}
