@@ -1,0 +1,40 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+int main() {
+    int n; // Number of integers in the array
+    cin >> n;
+
+    vector<int> arr(n); // Vector to store the sorted integers
+
+    // Reading the sorted integers into the vector
+    for (int i = 0; i < n; ++i) {
+        cin >> arr[i];
+    }
+
+    int q; // Number of queries
+    cin >> q;
+
+    // Processing each query
+    while (q--) {
+        int query;
+        cin >> query;
+
+        // Use lower_bound to find the position of the query
+        auto it = lower_bound(arr.begin(), arr.end(), query);
+        int index = it - arr.begin();
+
+        if (index < n && arr[index] == query) {
+            // If the element is found
+            cout << "Yes " << (index + 1) << endl; // Output 1-based index
+        } else {
+            // If the element is not found
+            cout << "No " << (index + 1) << endl; // Output 1-based index of the next smallest element
+        }
+    }
+
+    return 0;
+}
