@@ -1,0 +1,35 @@
+#include <iostream>
+#include <sstream>
+#include <vector>
+#include <string>
+
+using namespace std;
+
+vector<int> parseInts(const string& str) {
+    vector<int> integers;
+    stringstream ss(str);
+    int number;
+    char delimiter;
+
+    // Extract integers from the stringstream
+    while (ss >> number) {
+        integers.push_back(number);
+        ss >> delimiter; // Read and discard the comma
+    }
+
+    return integers;
+}
+
+int main() {
+    string str;
+    cin >> str; // Read the input string
+
+    vector<int> integers = parseInts(str); // Parse the integers
+
+    // Print each integer on a new line
+    for(int i = 0; i < integers.size(); i++) {
+        cout << integers[i] << "\n";
+    }
+
+    return 0;
+}
