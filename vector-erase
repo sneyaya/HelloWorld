@@ -1,0 +1,43 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+int main() {
+    int n; // Number of elements in the vector
+    cin >> n;
+
+    vector<int> v(n); // Vector to store the integers
+
+    // Reading the elements into the vector
+    for (int i = 0; i < n; ++i) {
+        cin >> v[i];
+    }
+
+    // Reading the position to be removed
+    int pos;
+    cin >> pos;
+
+    // Remove the element at the given position (1-based index)
+    v.erase(v.begin() + pos - 1);
+
+    // Reading the range to be removed
+    int start, end;
+    cin >> start >> end;
+
+    // Remove the elements in the range [start, end) (1-based index)
+    v.erase(v.begin() + start - 1, v.begin() + end - 1);
+
+    // Print the size of the vector
+    cout << v.size() << endl;
+
+    // Print the elements of the vector
+    for (size_t i = 0; i < v.size(); ++i) {
+        cout << v[i];
+        if (i < v.size() - 1) cout << " "; // Print space between numbers, but not after the last one
+    }
+    cout << endl; // Newline after output
+
+    return 0;
+}
